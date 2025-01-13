@@ -1,0 +1,5 @@
+@mixin post-style {
+  border: 1px solid var(--light-color);
+  border-radius: 2px;
+  background-color: var(--dark-color);
+}
