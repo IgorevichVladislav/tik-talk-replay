@@ -1,0 +1,6 @@
+:host {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+}
+
+/*# sourceMappingURL=layout.component.css.map */

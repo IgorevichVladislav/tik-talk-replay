@@ -1,0 +1,111 @@
+:host {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  grid-gap: 48px;
+  padding: 24px;
+}
+
+.profile-form {
+  padding: 32px;
+  background-color: var(--dark-color);
+  border: 1px solid var(--light-color);
+  display: grid;
+  gap: 20px;
+  height: calc(100dvh - 96px);
+}
+.profile-form__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.profile-form__two-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+.profile-form__label {
+  color: var(--light-transparent);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  margin-bottom: 20px;
+}
+.profile-form__label:focus-visible {
+  outline: 1px solid var(--primary-color);
+}
+.profile-form__input {
+  border-bottom: 1px solid var(--light-color);
+  color: var(--light-color);
+  width: 100%;
+  padding: 12px 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  resize: none;
+}
+.profile-form__input::placeholder {
+  color: var(--light-transparent);
+}
+.profile-form__avatar-text {
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--light-transparent);
+  margin-bottom: 20px;
+}
+.profile-form__settings {
+  display: flex;
+  justify-content: space-between;
+}
+.profile-form__settings-items {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.profile-form__icons-link {
+  padding: 14px;
+  border: 1px solid var(--light-color);
+  border-radius: 2px;
+  line-height: 0;
+  color: var(--light-color);
+  transition: color 0.2s linear;
+}
+.profile-form__icons-link:hover {
+  color: var(--primary-color);
+}
+.profile-form__icons-link:hover .profile-form__icon-delete {
+  color: red;
+}
+.profile-form__icon-delete {
+  color: var(--red-primary-color);
+  transition: color 0.2s linear;
+}
+.profile-form__icons {
+  width: 16px;
+  height: 16px;
+}
+.profile-form__settings-buttons {
+  color: var(--light-color);
+  border: 1px solid var(--light-color);
+  border-radius: 2px;
+  padding: 10px 20px;
+  font-size: 14px;
+  transition: color 0.2s linear, background-color 0.2s linear, border 0.2s linear;
+}
+.profile-form__settings-buttons:hover {
+  background-color: var(--primary-color);
+  color: var(--dark-color);
+  border: 1px solid var(--dark-color);
+}
+
+.saveColor {
+  background-color: var(--primary-color);
+  color: var(--dark-color);
+  border: 1px solid var(--dark-color);
+  transition: color 0.2s linear, border 0.2s linear;
+}
+.saveColor:hover {
+  color: var(--light-color);
+  border: 1px solid var(--light-color);
+}
+
+/*# sourceMappingURL=settings-page.component.css.map */

@@ -1,0 +1,12 @@
+img {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+}
+
+:host.size32 img {
+  width: 32px;
+  height: 32px;
+}
+
+/*# sourceMappingURL=avatar-circle.component.css.map */

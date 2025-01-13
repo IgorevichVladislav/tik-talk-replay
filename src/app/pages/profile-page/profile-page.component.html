@@ -1,0 +1,65 @@
+@if (profile$ | async; as profile) {
+  <header class="profile-page__header">
+
+    <app-profile-header
+      [profile]="profile"
+    ></app-profile-header>
+    <a
+      [routerLink]="['/settings']"
+      class="profile-page__settings-link">
+      Редактировать
+      <svg
+        [icon]="'settings'"
+        class="profile-page__settings-icon"
+      ></svg>
+    </a>
+  </header>
+
+  <main class="profile-page__main">
+
+    <div class="profile-page__main__posts">
+      <app-post-feed></app-post-feed>
+
+    </div>
+
+
+    <div class="profile-page__main__info">
+      <h3 class="h6 mb16">Подписчики</h3>
+
+      <ul class="profile-page__main__subscriber-avatar-list mb32">
+        @for (subscriber of subscribers$ | async; track subscriber.id) {
+
+          <li class="profile-page__main__subscriber-avatar-items">
+            <a class="profile-page__main__subscriber-avatar-link"
+               [routerLink]="['/profile', subscriber.id]"
+            >
+              <img
+                class="profile-page__main__subscriber-avatar-img"
+                [src]="subscriber.avatarUrl | imgUrl" [alt]="subscriber.username">
+            </a>
+          </li>
+        }
+        <a [routerLink]="['/search']"
+           class="profile-page__main__add-subscriber-link"
+        >
+          <svg
+            class="profile-page__main__add-subscriber-img"
+            icon="add-icon"></svg>
+        </a>
+      </ul>
+
+      <h3 class="h6 mb16">Навыки</h3>
+      <div class="profile-page__main__stack-wrapper mb32">
+        @for (skill of profile.stack; track skill) {
+          <div class="skill-tag">{{ skill }}</div>
+        }
+      </div>
+
+      <h3 class="h6 mb16">О себе</h3>
+      <p class="profile-page__main__description">{{ profile.description }}</p>
+
+    </div>
+
+  </main>
+
+}

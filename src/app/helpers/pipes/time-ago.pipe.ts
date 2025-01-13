@@ -1,44 +1,31 @@
 import {Pipe, PipeTransform} from "@angular/core";
-
-@Pipe({
-  name: 'hourAgo',
-  standalone: true
-})
+import {DateTime} from "luxon";
 
 @Pipe({
   name: 'timeAgo',
   standalone: true, // Указываем, что пайп standalone
 })
 export class TimeAgoPipe implements PipeTransform {
-  transform(value: string | null): string {
+  transform(value: string | null, timeZone: string = "UTC"): string {
     if (!value) {
-      return 'Дата неизвестна';
+      return "Дата неизвестна";
     }
 
-    const date = new Date(value);
-    const now = new Date();
-    const diffMs = now.getTime() - date.getTime(); // Разница в миллисекундах
+    // Интерпретируем входное значение как UTC, затем переводим в нужный часовой пояс
+    const date = DateTime.fromISO(value, { zone: "utc" }).setZone(timeZone);
 
-    if (isNaN(diffMs)) {
-      return 'Неверная дата';
+    if (!date.isValid) {
+      return "Неверная дата";
     }
 
-    const diffSec = Math.floor(diffMs / 1000);
-    const diffMin = Math.floor(diffSec / 60);
-    const diffHour = Math.floor(diffMin / 60);
-    const diffDay = Math.floor(diffHour / 24);
+    // Используем метод toRelative для получения относительного времени
+    const relativeTime = date.toRelative({
+      locale: "ru", // Устанавливаем локаль (например, русская)
+      style: "long", // Полный стиль отображения (можно "narrow" или "short")
+      round: true, // Округляем до целых значений
+    });
 
-    if (diffSec < 60) {
-      return diffSec === 1 ? '1 секунда назад' : `${diffSec} секунд назад`;
-    } else if (diffMin < 60) {
-      return diffMin === 1 ? '1 минута назад' : `${diffMin} минут назад`;
-    } else if (diffHour < 24) {
-      return diffHour === 1 ? '1 час назад' : `${diffHour} часов назад`;
-    } else if (diffDay < 7) {
-      return diffDay === 1 ? '1 день назад' : `${diffDay} дней назад`;
-    } else {
-      // Для всего старше недели возвращаем дату в формате "ДД.ММ.ГГГГ"
-      return date.toLocaleDateString();
-    }
+    // Если результат доступен, возвращаем его, иначе возвращаем форматированную дату
+    return relativeTime || date.toLocaleString(DateTime.DATE_MED);
   }
 }

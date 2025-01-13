@@ -1,0 +1,67 @@
+<header class="sidebar-header">
+  <img
+    src="/assets/svg/tik-talk-logo-small.svg"
+    alt="Logo"
+    class="ml16 mb20"
+  >
+
+  <nav class="main-menu">
+    <ul *ngFor="let menuItem of menuItems; "
+        class="main-menu__list">
+      <li class="main-menu__items">
+        <a
+          class="main-menu__links"
+          [routerLink]="[menuItem.link]"
+          [routerLinkActive]="['main-menu__active']"
+        >
+          <svg
+            class="main-menu__icons"
+            [icon]="menuItem.icon"></svg>
+          <span>{{ menuItem.label }}</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <p class="medium-text mb20 mt20">Подписчики</p>
+
+  @for (profile of subscribers$ | async; track profile.id) {
+    <app-subscriber-card
+      [profile]="profile"
+
+    ></app-subscriber-card>
+
+  }
+
+  <div class="mt20 to-subscribers">
+    <a [routerLink]="['/subscribers']"
+       class="to-subscribers__link medium-text"
+    >Все подписчики
+      <svg icon="arrow" class="to-subscribers__icon"></svg>
+    </a>
+  </div>
+</header>
+
+
+<footer class="sidebar-footer">
+  @if (me(); as me) {
+    <app-avatar-circle
+      [avatarUrl]="me.avatarUrl"
+      class="size32"
+    >
+    </app-avatar-circle>
+    <p>
+      {{ me.username }}
+    </p>
+
+    <a
+      class="sidebar-footer__link"
+      [routerLink]="['/settings']">
+      <svg
+        class="sidebar-footer__settings"
+        icon="settings"></svg>
+    </a>
+
+
+  }
+</footer>

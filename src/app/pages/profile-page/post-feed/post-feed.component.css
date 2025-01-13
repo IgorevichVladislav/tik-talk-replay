@@ -1,0 +1,10 @@
+:host {
+  display: grid;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+:host::-webkit-scrollbar {
+  display: none;
+}
+
+/*# sourceMappingURL=post-feed.component.css.map */

@@ -1,0 +1,129 @@
+:host {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  grid-gap: 48px;
+  padding: 24px;
+}
+
+.profile-form {
+  padding: 32px;
+  background-color: var(--dark-color);
+  border: 1px solid var(--light-color);
+  display: grid;
+  gap: 20px;
+  height: calc(100dvh - (24px * 4));
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__two-columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+  }
+
+  &__label {
+    color: var(--light-transparent);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    margin-bottom: 20px;
+
+    &:focus-visible {
+      outline: 1px solid var(--primary-color);
+    }
+  }
+
+  &__input {
+    border-bottom: 1px solid var(--light-color);
+    color: var(--light-color);
+    width: 100%;
+    padding: 12px 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    resize: none;
+
+    &::placeholder {
+      color: var(--light-transparent);
+
+    }
+  }
+
+  &__avatar-text {
+    font-weight: 500;
+    line-height: 16px;
+    color: var(--light-transparent);
+    margin-bottom: 20px;
+  }
+
+  &__settings {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__settings-items {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__icons-link {
+    padding: 14px;
+    border: 1px solid var(--light-color);
+    border-radius: 2px;
+    line-height: 0;
+    color: var(--light-color);
+    transition: color 0.2s linear;
+
+    &:hover {
+      color: var(--primary-color);
+
+      .profile-form__icon-delete {
+        color: red;
+      }
+    }
+  }
+
+  &__icon-delete {
+    color: var(--red-primary-color);
+    transition: color 0.2s linear;
+  }
+
+  &__icons {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__settings-buttons {
+    color: var(--light-color);
+    border: 1px solid var(--light-color);
+    border-radius: 2px;
+    padding: 10px 20px;
+    font-size: 14px;
+    transition: color 0.2s linear, background-color 0.2s linear,
+    border 0.2s linear;
+
+    &:hover {
+      background-color: var(--primary-color);
+      color: var(--dark-color);
+      border: 1px solid var(--dark-color);
+    }
+  }
+
+}
+
+.saveColor {
+  background-color: var(--primary-color);
+  color: var(--dark-color);
+  border: 1px solid var(--dark-color);
+  transition: color 0.2s linear, border 0.2s linear;
+
+  &:hover {
+    color: var(--light-color);
+    border: 1px solid var(--light-color);
+  }
+}
