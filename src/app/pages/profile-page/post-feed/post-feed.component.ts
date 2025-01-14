@@ -2,7 +2,6 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  HostBinding,
   HostListener,
   inject,
   input,
@@ -14,6 +13,7 @@ import {PostComponent} from "../post/post.component";
 import {PostService} from "../../../data/servises/post.service";
 import {audit, firstValueFrom, fromEvent, interval} from "rxjs";
 import {ProfileService} from "../../../data/servises/profile.service";
+import {Post, PostComment} from "../../../data/interfaces/post.interface";
 
 @Component({
   selector: 'app-post-feed',
@@ -32,13 +32,9 @@ export class PostFeedComponent {
   r2 = inject(Renderer2)
 
   feed = this.postService.posts
-
-  isCommentInput = input(false);
-  postId = input<number>(0)
-  commentId = input<number>(0)
-
-  @Output() created = new EventEmitter();
-
+  post = input<Post>()
+  comment = input<PostComment>()
+  @Output() created = new EventEmitter<string>();
 
   @HostListener('window:resize')
   onWindowResize() {
@@ -46,7 +42,7 @@ export class PostFeedComponent {
   }
 
   constructor() {
-    firstValueFrom(this.postService.fetchPost())
+    this.loadPosts()
   }
 
   ngAfterViewInit() {
@@ -57,6 +53,7 @@ export class PostFeedComponent {
         audit(() => interval(1000))
       )
       .subscribe(() => {
+        this.resizeFeed()
         console.log('3333')
       })
 
@@ -70,28 +67,33 @@ export class PostFeedComponent {
     this.r2.setStyle(this.hostElement.nativeElement, 'height', `${height}px`)
   }
 
-  onCreatePost(postText: string) {
-    if (!this.postService) return
-
-    if (this.isCommentInput()) {
-      firstValueFrom(this.postService.createComment({
-        text: postText,
-        authorId: this.profile()!.id,
-        postId: this.postId(),
-        commentId: this.commentId()
-      })).then(() => {
-        postText = ''
-        this.created.emit()
+  private loadPosts() {
+    firstValueFrom(this.postService.fetchPost())
+      .then(posts => {
+        this.feed.set(posts)
       })
-      return;
-    }
+      .catch(err => {
+        console.log('Error loading posts', err);
+      })
 
+  }
+
+  onCreatePost(postText: string) {
+    if (!postText) return
 
     firstValueFrom(this.postService.createPost({
       title: 'Перввый пост',
-      content:postText,
+      content: postText,
       authorId: this.profile()!.id,
-    })).then(() => postText = '')
+      communityId: this.post()!.communityId
+    })).then(() => {
+      this.created.emit()
+      this.loadPosts()
+    })
     return;
+
+
   }
+
+
 }

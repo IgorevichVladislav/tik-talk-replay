@@ -1,11 +1,9 @@
 import {
   Component,
   EventEmitter,
-  HostBinding,
   inject,
   Input,
   input,
-  numberAttribute,
   Output,
   Renderer2
 } from '@angular/core';
@@ -13,9 +11,8 @@ import {ProfileService} from "../../../data/servises/profile.service";
 import {AvatarCircleComponent} from "../../../common-ui/avatar-circle/avatar-circle.component";
 import {NgIf} from "@angular/common";
 import {SvgIconComponent} from "../../../common-ui/svg-icon/svg-icon.component";
-import {PostService} from "../../../data/servises/post.service";
 import {FormsModule} from "@angular/forms";
-import {firstValueFrom} from "rxjs";
+
 
 @Component({
   selector: 'app-post-input',
@@ -30,19 +27,13 @@ import {firstValueFrom} from "rxjs";
   styleUrl: './post-input.component.scss'
 })
 export class PostInputComponent {
-
   r2 = inject(Renderer2);
-  isCommentInput = input(false);
-
-
   profile = inject(ProfileService).me;
 
   @Input() placeholderText = 'Напишите что-нибудь'
 
-  @HostBinding('class.dashed-comment')
-  get isComment() {
-    return this.isCommentInput();
-  }
+  @Output() created = new EventEmitter<string>();
+  postId = input<number>(0)
 
   postText = ''
 
@@ -52,6 +43,15 @@ export class PostInputComponent {
     this.r2.setStyle(textarea, 'height', textarea.scrollHeight + 'px');
   }
 
+  onSend() {
+    if (this.postText.trim()) {
+      this.created.emit(this.postText);
+      this.postText = '';
+    }
+  }
 
+  onKeyUp() {
+    this.onSend()
+  }
 
 }

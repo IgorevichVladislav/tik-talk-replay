@@ -9,11 +9,12 @@
   class="hidden-textarea"
   [placeholder]='placeholderText'
   (input)="onTextAreaInput($event)"
+  (keyup.enter)="onKeyUp()"
 
 ></textarea>
 
 <button class="send-message"
         type="button"
-        (click)="onCreatePost()">
+        (click)="onSend()">
   <svg icon="send-message" class="send-message__icon"></svg>
 </button>

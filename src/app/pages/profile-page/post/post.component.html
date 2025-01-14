@@ -31,10 +31,9 @@
     <app-post-input
       placeholderText="Напишите комментарий"
       class="dashed-comment"
-      (created)="onCreated()"
       [postId]="post.id"
-      [commentId]="comments().length"
-      [isCommentInput]="true">
+      (created)="onCreated($event)"
+      >
     </app-post-input>
   </main>
 }
