@@ -1,0 +1,49 @@
+:host {
+  border-right: var(--light-border);
+}
+
+.chats-filter-input {
+  padding: 12px 0;
+  border-bottom: var(--light-border);
+  color: var(--light-color);
+  width: 100%;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  transition: border-color 0.2s linear;
+
+  &::placeholder {
+    color: var(--light-transparent);
+  }
+
+  &__wrapper {
+    padding: 16px 20px;
+    border-bottom: var(--light-border);
+  }
+
+  &__label {
+    position: relative;
+
+  }
+
+  &__img {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 18px;
+    height: 18px;
+    transition: color 0.2s linear;
+  }
+}
+
+.chats-filter-input::placeholder {
+  color: var(--light-transparent);
+}
+
+.chats-filter-input:focus-visible, .profile-search-form__input:active {
+  border-color: var(--primary-color);
+}
+
+.chats-filter-input__label:focus-within .chats-filter-input__img {
+  color: var(--primary-color);
+}

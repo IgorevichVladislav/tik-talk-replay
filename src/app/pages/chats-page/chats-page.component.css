@@ -1,0 +1,9 @@
+:host {
+  background-color: var(--dark-color);
+  border: 1px solid var(--light-color);
+  height: 100%;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+}
+
+/*# sourceMappingURL=chats-page.component.css.map */

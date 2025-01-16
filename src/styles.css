@@ -65,6 +65,7 @@
   --red-primary-color: #e99898;
   --light-transparent: rgba(255, 255, 255, 0.75);
   --dark-hover-color: #161616;
+  --light-border: 1px solid var(--light-color);
 }
 
 html {
@@ -167,6 +168,11 @@ body {
   width: 32px;
   height: 32px;
   border-radius: 50%;
+}
+
+.svg18 {
+  width: 18px;
+  height: 18px;
 }
 
 .login-form {
