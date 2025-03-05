@@ -8,6 +8,7 @@
   --red-primary-color: #e99898;
   --light-transparent: rgba(255, 255, 255, 0.75);
   --dark-hover-color: #161616;
+  --dark-message: #404040;
   --light-border: 1px solid var(--light-color);
 }
 
@@ -109,10 +110,24 @@ body {
   padding: 24px;
 }
 
+.size16 {
+  width: 16px;
+  height: 16px;
+}
+
 .size32 {
   width: 32px;
   height: 32px;
   border-radius: 50%;
+}
+
+.mr4 {
+  margin-right: 4px;
+}
+
+.svg16 {
+  width: 16px;
+  height: 16px;
 }
 
 .svg18 {
@@ -201,4 +216,8 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background-color: var(--primary-color);
+}
+
+.tt-input.ng-invalid.ng-touched {
+  border: 1px solid red;
 }

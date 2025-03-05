@@ -48,7 +48,7 @@
 }
 
 .sidebar-header {
-  flex-grow: 1;
+  flex: 1;
 }
 
 .sidebar-footer {

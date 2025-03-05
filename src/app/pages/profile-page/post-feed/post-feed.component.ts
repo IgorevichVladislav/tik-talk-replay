@@ -39,6 +39,7 @@ export class PostFeedComponent {
   @HostListener('window:resize')
   onWindowResize() {
     this.resizeFeed()
+
   }
 
   constructor() {
@@ -53,11 +54,10 @@ export class PostFeedComponent {
         audit(() => interval(1000))
       )
       .subscribe(() => {
+        console.log(3333)
         this.resizeFeed()
-        console.log('3333')
       })
 
-    //ДЗ
   }
 
   resizeFeed() {

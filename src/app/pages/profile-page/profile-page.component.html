@@ -4,22 +4,32 @@
     <app-profile-header
       [profile]="profile"
     ></app-profile-header>
-    <a
-      [routerLink]="['/settings']"
-      class="profile-page__settings-link">
-      Редактировать
-      <svg
-        [icon]="'settings'"
-        class="profile-page__settings-icon"
-      ></svg>
-    </a>
+    @if (isMyPage()) {
+
+      <a
+        [routerLink]="['/settings']"
+        class="profile-page__settings-link">
+        Редактировать
+        <svg
+          [icon]="'settings'"
+          class="profile-page__settings-icon"
+        ></svg>
+      </a>
+    } @else {
+      <button
+        class="profile-page__settings-link"
+        (click)="sendMessage(profile.id)">
+        Написать
+        <svg icon="send-message" class="svg16"></svg>
+      </button>
+    }
+
   </header>
 
   <main class="profile-page__main">
 
     <div class="profile-page__main__posts">
       <app-post-feed></app-post-feed>
-
     </div>
 
 

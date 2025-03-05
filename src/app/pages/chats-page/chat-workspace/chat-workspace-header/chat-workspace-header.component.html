@@ -1,1 +1,18 @@
-<p>chat-workspace-header works!</p>
+@if (profile(); as profile) {
+
+  <a href="" class="workspace-header__link">
+    <svg icon="arrow-left" class="size16 workspace-header__icon"></svg>
+  </a>
+  <div class="companion-wrapper">
+    <app-avatar-circle
+      class="size32"
+      [avatarUrl]="profile.avatarUrl"
+    ></app-avatar-circle>
+
+    <div class="work-space-header__info">{{ profile.firstName }} {{ profile.lastName }}</div>
+
+  </div>
+    <a href="" class="workspace-header__link">
+      <svg icon="dots-vertical" class="size16 workspace-header__icon"></svg>
+    </a>
+}

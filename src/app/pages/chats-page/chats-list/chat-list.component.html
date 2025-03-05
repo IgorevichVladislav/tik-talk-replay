@@ -1,9 +1,16 @@
 <div class="chats-filter-input__wrapper">
   <label class="chats-filter-input__label">
-    <input type="text" class="chats-filter-input"
-           placeholder="Искать...">
+    <input type="text" class="chats-filter-input" placeholder="Искать..."
+           [formControl]="filterChatsControl">
     <svg class="chats-filter-input__img svg18" icon="search"></svg>
   </label>
 </div>
 
-<button chats></button>
+@for (chat of chats$ | async; track chat.id) {
+  <button
+    chats
+    [chat]="chat"
+    [routerLink]="[chat.id]"
+    routerLinkActive="active">
+  </button>
+}

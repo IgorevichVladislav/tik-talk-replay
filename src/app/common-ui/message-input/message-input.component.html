@@ -1,1 +1,20 @@
-<p>message-input works!</p>
+<app-avatar-circle
+  *ngIf="me() as me"
+  [avatarUrl]="me.avatarUrl"
+  class="size32"
+></app-avatar-circle>
+
+<textarea
+  [(ngModel)]="postText"
+  class="hidden-textarea"
+  [placeholder]='placeholderText'
+  (input)="onTextAreaInput($event)"
+  (keyup.enter)="onKeyUp()"
+
+></textarea>
+
+<button class="send-message"
+        type="button"
+        (click)="onSend()">
+  <svg icon="send-message" class="send-message__icon"></svg>
+</button>
