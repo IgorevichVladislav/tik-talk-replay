@@ -1,9 +1,0 @@
-:host {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  height: 100dvh;
-  align-items: center;
-  margin: 0 10%;
-}
-
-/*# sourceMappingURL=login-page.component.css.map */

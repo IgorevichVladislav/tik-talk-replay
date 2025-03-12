@@ -1,0 +1,37 @@
+<form class="profile-search-form" [formGroup]="searchForm">
+  <label class="profile-search-form__label">
+    Имя
+    <input
+      type="text"
+      class="profile-search-form__input"
+      formControlName="firstName"
+      placeholder="Введите данные"
+    />
+    <svg class="profile-search-form__img" icon="search"></svg>
+  </label>
+
+  <label class="profile-search-form__label">
+    Фамилия
+    <input
+      type="text"
+      class="profile-search-form__input"
+      formControlName="lastName"
+      placeholder="Введите данные"
+    />
+    <svg class="profile-search-form__img" icon="search"></svg>
+  </label>
+
+  <label class="profile-search-form__label">
+    Навыки
+    <input
+      type="text"
+      class="profile-search-form__input"
+      formControlName="stack"
+      placeholder="Введите данные"
+    />
+    <svg class="profile-search-form__img" icon="search"></svg>
+  </label>
+  <button class="profile-search-form__filter-btn">
+    <svg class="profile-search-form__filter-icon" icon="filter"></svg>
+  </button>
+</form>

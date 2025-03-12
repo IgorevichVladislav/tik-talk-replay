@@ -1,0 +1,63 @@
+@import 'mixins';
+
+:host {
+  @include post-style;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  grid-gap: 20px;
+  margin: 16px 0;
+}
+
+.post {
+  display: grid;
+  grid-gap: 12px;
+
+  &__header {
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__comment-amount {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &__created-at {
+    color: var(--light-transparent);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__comments-length {
+    color: var(--primary-color);
+    line-height: 16px;
+  }
+}
+
+.post-comment__wrapper {
+  max-height: 150px;
+  overflow-y: scroll;
+  display: grid;
+  grid-gap: 8px;
+  padding: 8px 0;
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: var(--dark-transparent);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+  }
+}
