@@ -6,14 +6,13 @@ import {
   RouterLink,
   RouterOutlet,
 } from '@angular/router';
-import { firstValueFrom, switchMap } from 'rxjs';
+import { switchMap } from 'rxjs';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { AsyncPipe, NgForOf } from '@angular/common';
-import { ChatService } from '@tt/chats';
 import { ImgUrlPipe, SvgIconComponent } from '@tt/common-ui';
-import { PostFeedComponent } from '@tt/posts';
-import { ProfileService } from '../../data';
 import { ProfileHeaderComponent } from '../../ui';
+import { PostFeedComponent } from '@tt/posts';
+import { ProfileService } from '@tt/data-access/profile';
 
 @Component({
   selector: 'app-profile-page',
@@ -27,6 +26,7 @@ import { ProfileHeaderComponent } from '../../ui';
     NgForOf,
     ImgUrlPipe,
     PostFeedComponent
+
   ],
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.scss',
@@ -35,7 +35,6 @@ export class ProfilePageComponent {
   profileService = inject(ProfileService);
   route = inject(ActivatedRoute);
   router = inject(Router);
-  chatsService = inject(ChatService);
   me$ = toObservable(this.profileService.me);
   subscribers$ = this.profileService.getSubscribersShortList(6);
 
@@ -49,8 +48,6 @@ export class ProfilePageComponent {
   );
 
   async sendMessage(userId: number) {
-    firstValueFrom(this.chatsService.createChat(userId)).then((res) => {
-      this.router.navigate(['/chats', res.id]);
-    });
+      this.router.navigate(['/chats', 'new'], {queryParams: {userId}});
   }
 }

@@ -10,7 +10,7 @@ import {
 import { NgIf } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AvatarCircleComponent, SvgIconComponent } from '@tt/common-ui';
-import { ProfileService } from '@tt/profile';
+import { ProfileService } from '@tt/data-access/profile';
 
 
 @Component({

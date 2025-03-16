@@ -10,10 +10,9 @@ import {
 import { DatePipe } from '@angular/common';
 import { firstValueFrom } from 'rxjs';
 import { AvatarCircleComponent, DndDirective, SvgIconComponent, TimeAgoPipe } from '@tt/common-ui';
-import { ProfileService } from '@tt/profile';
 import { CommentComponent, PostInputComponent } from '../../ui';
-import { Post, PostComment } from '@tt/interfaces/posts';
-import { PostService } from '../../data';
+import { Post, PostComment, PostService } from '@tt/data-access/posts';
+import { ProfileService } from '@tt/data-access/profile';
 
 @Component({
   selector: 'app-post',
@@ -38,7 +37,6 @@ export class PostComponent implements OnInit {
 
   comments = signal<PostComment[]>([]);
 
-  // @ts-ignore
   postService = inject(PostService);
 
   @HostBinding('class.dashed-comment')

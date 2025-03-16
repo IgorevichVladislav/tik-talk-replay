@@ -1,4 +1,4 @@
-import { Profile } from '../..';
+import { Profile } from '../../../index';
 
 export interface PostCreateDto {
   title: string;

@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SvgIconComponent } from '@tt/common-ui';
-import { AuthService } from '../../index';
+import { AuthService } from '../../auth/auth.service';
 
 
 @Component({
@@ -18,6 +18,7 @@ import { AuthService } from '../../index';
   styleUrl: './login-page.component.scss'
 })
 export class LoginPageComponent {
+
   authService = inject(AuthService);
   router = inject(Router);
   isPasswordVisible = signal<boolean>(false);

@@ -1,9 +1,9 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, tap } from 'rxjs';
-import { Pageble } from '@tt/shared';
-import { Profile } from '@tt/interfaces/profile';
-import { GlobalStoreService } from '@tt/shared';
+import { Profile } from '../index';
+import { GlobalStoreService, Pageble } from '../../shared/';
+
 
 
 @Injectable({
@@ -22,7 +22,7 @@ export class ProfileService {
     return this.http.get<Profile>(`${this.baseApiUrl}me`).pipe(
       tap((res) => {
         this.me.set(res);
-        this.#globalStoreService.me.set(res)
+        this.#globalStoreService.me.set(res);
       })
     );
   }

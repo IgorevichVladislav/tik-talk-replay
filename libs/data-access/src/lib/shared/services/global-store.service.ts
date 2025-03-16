@@ -1,5 +1,6 @@
 import { Injectable, signal } from '@angular/core';
-import { Profile } from '@tt/interfaces/profile';
+import { Profile } from '../../../index';
+
 
 @Injectable({
   providedIn: 'root'

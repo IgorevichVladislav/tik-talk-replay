@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NoReactValidator } from './no-react.validator';
-import { FormsExperimentComponent } from './app/lib/experimental/forms-experiment/forms-experiment.component';
+// import { NoReactValidator } from './no-react.validator';
+// import { FormsExperimentComponent } from './app/lib/experimental/forms-experiment/forms-experiment.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     RouterOutlet,
-    NoReactValidator,
-    FormsExperimentComponent,
+    // NoReactValidator,
+    // FormsExperimentComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

@@ -10,21 +10,22 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   baseApiUrl = 'https://icherniakov.ru/yt-course/auth/';
-  cookieService = inject(CookieService);
   http = inject(HttpClient);
   router = inject(Router);
+  cookieService = inject(CookieService);
+
   token: string | null = '';
-  refresh_token: string | null = '';
+  refreshToken: string | null = '';
 
   get isAuth() {
     if (!this.token) {
       this.token = this.cookieService.get('token');
-      this.refresh_token = this.cookieService.get('refreshToken');
+      this.refreshToken = this.cookieService.get('refreshToken');
     }
     return !!this.token;
   }
 
-  login(payload: { username: string ; password: string }) {
+  login(payload: { username: string , password: string }) {
     const fd = new FormData();
 
     fd.append('username', payload.username);
@@ -38,11 +39,12 @@ export class AuthService {
   }
 
   refreshAuthToken() {
-    return this.http
-      .post<TokenResponse>(`${this.baseApiUrl}refresh`, {
-        refresh_token: this.refresh_token,
-      })
-      .pipe(
+    return this.http.post<TokenResponse>(
+      `${this.baseApiUrl}refresh`,
+      {
+        refresh_token: this.refreshToken,
+      }
+      ).pipe(
         tap((res) => {
           this.saveTokens(res);
         }),
@@ -56,15 +58,16 @@ export class AuthService {
 
   logout() {
     this.cookieService.deleteAll();
-    this.token = this.refresh_token = null;
-    this.router.navigate(['login']);
+    this.token = null;
+    this.refreshToken = null;
+    this.router.navigate(['/login']);
   }
 
   saveTokens(res: TokenResponse) {
     this.token = res.access_token;
-    this.refresh_token = res.refresh_token;
+    this.refreshToken = res.refresh_token;
 
     this.cookieService.set('token', this.token);
-    this.cookieService.set('refreshToken', this.refresh_token);
+    this.cookieService.set('refreshToken', this.refreshToken);
   }
 }

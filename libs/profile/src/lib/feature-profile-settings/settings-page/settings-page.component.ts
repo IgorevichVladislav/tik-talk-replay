@@ -9,9 +9,8 @@ import { firstValueFrom } from 'rxjs';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { AsyncPipe } from '@angular/common';
 import { SvgIconComponent } from '@tt/common-ui';
-import { Profile } from '@tt/interfaces/profile';
 import { AvatarUploadComponent, ProfileHeaderComponent } from '../../ui';
-import { ProfileService } from '../../data';
+import { Profile, ProfileService } from '@tt/data-access/profile';
 
 @Component({
   selector: 'app-settings-page',

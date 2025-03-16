@@ -8,9 +8,9 @@ import {
 } from '@angular/core';
 import { audit, firstValueFrom, fromEvent, interval } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Chat, ChatService } from '../../../data';
-import { MessageInputComponent } from '../../../ui';
-import { ChatWorkspaceMessageComponent } from '../..';
+import { MessageInputComponent } from '../../../ui/index';
+import { ChatWorkspaceMessageComponent } from './chat-workspace-message/chat-workspace-message.component';
+import { Chat, ChatService } from '@tt/data-access/chats';
 
 @Component({
   selector: 'app-chat-workspace-messages-wrapper',
