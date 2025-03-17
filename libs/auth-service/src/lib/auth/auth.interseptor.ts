@@ -12,7 +12,8 @@ import {
   tap,
   throwError,
 } from 'rxjs';
-import { AuthService } from './auth.service';
+import { AuthService } from '@tt/data-access/auth';
+
 
 
 let isRefreshing$ = new BehaviorSubject<boolean>(false);

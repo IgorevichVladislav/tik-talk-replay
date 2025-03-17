@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SvgIconComponent } from '@tt/common-ui';
-import { AuthService } from '../../auth/auth.service';
+import { AuthService } from '@tt/data-access/auth/service/auth.service';
 
 
 @Component({

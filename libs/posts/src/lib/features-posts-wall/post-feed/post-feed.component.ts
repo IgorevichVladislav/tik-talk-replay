@@ -9,10 +9,11 @@ import {
   Renderer2,
 } from '@angular/core';
 import { audit, firstValueFrom, fromEvent, interval } from 'rxjs';
-import { PostInputComponent } from '../../ui';
-import { PostComponent } from '../index';
 import { Post, PostComment, PostService } from '@tt/data-access/posts';
 import { ProfileService } from '@tt/data-access/profile';
+import { PostComponent } from '../post/post.component';
+import { PostInputComponent } from '../../ui/post-input/post-input.component';
+
 
 @Component({
   selector: 'app-post-feed',

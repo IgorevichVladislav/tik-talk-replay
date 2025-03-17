@@ -3,8 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { of, switchMap } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { SvgIconComponent } from '@tt/common-ui';
-import { ChatWorkspaceHeaderComponent, ChatWorkspaceMessagesWrapperComponent } from '../index';
-import { MessageInputComponent } from '../../ui/index';
+import { MessageInputComponent } from '../../ui/message-input/message-input.component';
+import { ChatWorkspaceHeaderComponent } from './chat-workspace-header/chat-workspace-header.component';
+import { ChatWorkspaceMessagesWrapperComponent } from './chat-workspace-messages-wrapper/chat-workspace-messages-wrapper.component';
 import { ChatService } from '@tt/data-access/chats';
 
 @Component({

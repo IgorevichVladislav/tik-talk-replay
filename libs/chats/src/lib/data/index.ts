@@ -1,4 +1,4 @@
-import { ChatService } from "@tt/data-access/chats/servises/chats.service";
+import { ChatService } from "@tt/data-access/chats/services/chats.service";
 
 export {
   ChatService

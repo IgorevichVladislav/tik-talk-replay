@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   Component,
   ElementRef,
   HostListener,
@@ -8,8 +9,8 @@ import {
 } from '@angular/core';
 import { audit, firstValueFrom, fromEvent, interval } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { MessageInputComponent } from '../../../ui/index';
 import { ChatWorkspaceMessageComponent } from './chat-workspace-message/chat-workspace-message.component';
+import { MessageInputComponent } from '../../../ui/message-input/message-input.component';
 import { Chat, ChatService } from '@tt/data-access/chats';
 
 @Component({
@@ -19,7 +20,7 @@ import { Chat, ChatService } from '@tt/data-access/chats';
   templateUrl: './chat-workspace-messages-wrapper.component.html',
   styleUrl: './chat-workspace-messages-wrapper.component.scss'
 })
-export class ChatWorkspaceMessagesWrapperComponent {
+export class ChatWorkspaceMessagesWrapperComponent  implements AfterViewInit{
   chatsService = inject(ChatService);
   hostElement = inject(ElementRef);
   r2 = inject(Renderer2);
