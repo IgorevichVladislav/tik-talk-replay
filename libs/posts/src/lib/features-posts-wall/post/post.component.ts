@@ -15,19 +15,18 @@ import { Post, PostComment, PostService } from '@tt/data-access/posts';
 import { ProfileService } from '@tt/data-access/profile';
 
 @Component({
-  selector: 'app-post',
-  standalone: true,
-  imports: [
-    AvatarCircleComponent,
-    DatePipe,
-    SvgIconComponent,
-    PostInputComponent,
-    DndDirective,
-    CommentComponent,
-    TimeAgoPipe,
-  ],
-  templateUrl: './post.component.html',
-  styleUrl: './post.component.scss',
+    selector: 'app-post',
+    imports: [
+        AvatarCircleComponent,
+        DatePipe,
+        SvgIconComponent,
+        PostInputComponent,
+        DndDirective,
+        CommentComponent,
+        TimeAgoPipe
+    ],
+    templateUrl: './post.component.html',
+    styleUrl: './post.component.scss'
 })
 export class PostComponent implements OnInit {
   profile = inject(ProfileService).me;

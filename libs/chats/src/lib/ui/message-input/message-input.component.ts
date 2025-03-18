@@ -14,17 +14,16 @@ import { ProfileService } from '@tt/data-access/profile';
 
 
 @Component({
-  selector: 'app-message-input',
-  standalone: true,
-  imports: [
-    AvatarCircleComponent,
-    NgIf,
-    ReactiveFormsModule,
-    SvgIconComponent,
-    FormsModule,
-  ],
-  templateUrl: './message-input.component.html',
-  styleUrl: './message-input.component.scss',
+    selector: 'app-message-input',
+    imports: [
+        AvatarCircleComponent,
+        NgIf,
+        ReactiveFormsModule,
+        SvgIconComponent,
+        FormsModule
+    ],
+    templateUrl: './message-input.component.html',
+    styleUrl: './message-input.component.scss'
 })
 export class MessageInputComponent {
   r2 = inject(Renderer2);

@@ -9,17 +9,16 @@ import { ChatWorkspaceMessagesWrapperComponent } from './chat-workspace-messages
 import { ChatService } from '@tt/data-access/chats';
 
 @Component({
-  selector: 'app-chat-workspace',
-  standalone: true,
-  imports: [
-    ChatWorkspaceHeaderComponent,
-    ChatWorkspaceMessagesWrapperComponent,
-    MessageInputComponent,
-    AsyncPipe,
-    SvgIconComponent,
-  ],
-  templateUrl: './chat-workspace.component.html',
-  styleUrl: './chat-workspace.component.scss',
+    selector: 'app-chat-workspace',
+    imports: [
+        ChatWorkspaceHeaderComponent,
+        ChatWorkspaceMessagesWrapperComponent,
+        MessageInputComponent,
+        AsyncPipe,
+        SvgIconComponent
+    ],
+    templateUrl: './chat-workspace.component.html',
+    styleUrl: './chat-workspace.component.scss'
 })
 export class ChatWorkspaceComponent {
   route = inject(ActivatedRoute);

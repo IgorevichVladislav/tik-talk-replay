@@ -9,11 +9,10 @@ import { SvgIconComponent } from '@tt/common-ui';
 import { ProfileService } from '@tt/data-access/profile';
 
 @Component({
-  selector: 'app-profile-filters',
-  standalone: true,
-  imports: [ReactiveFormsModule, SvgIconComponent],
-  templateUrl: './profile-filters.component.html',
-  styleUrl: './profile-filters.component.scss',
+    selector: 'app-profile-filters',
+    imports: [ReactiveFormsModule, SvgIconComponent],
+    templateUrl: './profile-filters.component.html',
+    styleUrl: './profile-filters.component.scss'
 })
 export class ProfileFiltersComponent {
   fb = inject(FormBuilder);

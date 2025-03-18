@@ -4,15 +4,14 @@ import { RouterOutlet } from '@angular/router';
 // import { FormsExperimentComponent } from './app/lib/experimental/forms-experiment/forms-experiment.component';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    RouterOutlet,
-    // NoReactValidator,
-    // FormsExperimentComponent,
-  ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+    selector: 'app-root',
+    imports: [
+        RouterOutlet,
+        // NoReactValidator,
+        // FormsExperimentComponent,
+    ],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent {
   // person = {

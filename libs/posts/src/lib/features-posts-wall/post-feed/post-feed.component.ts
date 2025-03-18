@@ -16,11 +16,10 @@ import { PostInputComponent } from '../../ui/post-input/post-input.component';
 
 
 @Component({
-  selector: 'app-post-feed',
-  standalone: true,
-  imports: [PostInputComponent, PostComponent],
-  templateUrl: './post-feed.component.html',
-  styleUrl: './post-feed.component.scss',
+    selector: 'app-post-feed',
+    imports: [PostInputComponent, PostComponent],
+    templateUrl: './post-feed.component.html',
+    styleUrl: './post-feed.component.scss'
 })
 export class PostFeedComponent {
   postService = inject(PostService);
@@ -78,7 +77,7 @@ export class PostFeedComponent {
         title: 'Перввый пост',
         content: postText,
         authorId: this.profile()!.id,
-        communityId: this.post()!.communityId,
+        // communityId: this.post()!.communityId,
       })
     ).then(() => {
       this.created.emit();

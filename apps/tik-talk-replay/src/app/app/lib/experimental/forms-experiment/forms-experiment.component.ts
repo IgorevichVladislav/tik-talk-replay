@@ -196,7 +196,4 @@ export class FormsExperimentComponent {
   }
 
   sort = () => 0;
-
-  protected readonly tap = tap;
-  protected readonly console = console;
 }

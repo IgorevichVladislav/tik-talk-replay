@@ -4,11 +4,10 @@ import { AvatarCircleComponent, TimeAgoPipe } from '@tt/common-ui';
 import { Message } from '@tt/data-access/chats';
 
 @Component({
-  selector: 'app-chat-workspace-message',
-  standalone: true,
-  imports: [AvatarCircleComponent, TimeAgoPipe, DatePipe],
-  templateUrl: './chat-workspace-message.component.html',
-  styleUrl: './chat-workspace-message.component.scss',
+    selector: 'app-chat-workspace-message',
+    imports: [AvatarCircleComponent, TimeAgoPipe, DatePipe],
+    templateUrl: './chat-workspace-message.component.html',
+    styleUrl: './chat-workspace-message.component.scss'
 })
 export class ChatWorkspaceMessageComponent {
   message = input.required<Message>();

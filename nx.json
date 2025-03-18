@@ -44,7 +44,7 @@
       ]
     }
   },
-  "nxCloudId": "67cdafaf13498464254ef107",
+  "nxCloudId": "67d8993f07103806e3f782b3",
   "generators": {
     "@nx/angular:library": {
       "linter": "eslint",
@@ -64,5 +64,6 @@
         "targetName": "eslint:lint"
       }
     }
-  ]
+  ],
+  "$schema": "./node_modules/nx/schemas/nx-schema.json"
 }

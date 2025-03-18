@@ -7,21 +7,20 @@ import { AvatarCircleComponent, ImgUrlPipe, SvgIconComponent } from '@tt/common-
 import { ProfileService } from '@tt/data-access/profile';
 
 @Component({
-  selector: 'app-sidebar',
-  standalone: true,
-  imports: [
-    SvgIconComponent,
-    NgForOf,
-    SubscriberCardComponent,
-    RouterLink,
-    AsyncPipe,
-    JsonPipe,
-    ImgUrlPipe,
-    RouterLinkActive,
-    AvatarCircleComponent
-  ],
-  templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.scss'
+    selector: 'app-sidebar',
+    imports: [
+        SvgIconComponent,
+        NgForOf,
+        SubscriberCardComponent,
+        RouterLink,
+        AsyncPipe,
+        JsonPipe,
+        ImgUrlPipe,
+        RouterLinkActive,
+        AvatarCircleComponent
+    ],
+    templateUrl: './sidebar.component.html',
+    styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent  implements OnInit{
   profileService = inject(ProfileService);

@@ -6,11 +6,10 @@ import { ProfileService } from '@tt/data-access/profile';
 
 
 @Component({
-  selector: 'app-search-page',
-  standalone: true,
-  imports: [ProfileCardComponent, ProfileFiltersComponent, AsyncPipe],
-  templateUrl: './search-page.component.html',
-  styleUrl: './search-page.component.scss',
+    selector: 'app-search-page',
+    imports: [ProfileCardComponent, ProfileFiltersComponent, AsyncPipe],
+    templateUrl: './search-page.component.html',
+    styleUrl: './search-page.component.scss'
 })
 export class SearchPageComponent {
   profileService = inject(ProfileService);

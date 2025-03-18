@@ -13,19 +13,18 @@ import { AvatarUploadComponent, ProfileHeaderComponent } from '../../ui';
 import { Profile, ProfileService } from '@tt/data-access/profile';
 
 @Component({
-  selector: 'app-settings-page',
-  standalone: true,
-  imports: [
-    ProfileHeaderComponent,
-    ReactiveFormsModule,
-    SvgIconComponent,
-    AvatarUploadComponent,
-    RouterLink,
-    RouterLinkActive,
-    AsyncPipe,
-  ],
-  templateUrl: './settings-page.component.html',
-  styleUrl: './settings-page.component.scss',
+    selector: 'app-settings-page',
+    imports: [
+        ProfileHeaderComponent,
+        ReactiveFormsModule,
+        SvgIconComponent,
+        AvatarUploadComponent,
+        RouterLink,
+        RouterLinkActive,
+        AsyncPipe
+    ],
+    templateUrl: './settings-page.component.html',
+    styleUrl: './settings-page.component.scss'
 })
 export class SettingsPageComponent {
   profile = input<Profile>();

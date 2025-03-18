@@ -11,11 +11,10 @@ import { AuthService } from '@tt/data-access/auth/service/auth.service';
 
 
 @Component({
-  selector: 'app-login-page',
-  standalone: true,
-  imports: [ReactiveFormsModule, SvgIconComponent],
-  templateUrl: './login-page.component.html',
-  styleUrl: './login-page.component.scss'
+    selector: 'app-login-page',
+    imports: [ReactiveFormsModule, SvgIconComponent],
+    templateUrl: './login-page.component.html',
+    styleUrl: './login-page.component.scss'
 })
 export class LoginPageComponent {
 
