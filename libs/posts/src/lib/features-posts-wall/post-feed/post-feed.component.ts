@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   Component,
   ElementRef,
   EventEmitter,
@@ -6,7 +7,7 @@ import {
   inject,
   input,
   Output,
-  Renderer2,
+  Renderer2
 } from '@angular/core';
 import { audit, firstValueFrom, fromEvent, interval } from 'rxjs';
 import { Post, PostComment, PostService } from '@tt/data-access/posts';
@@ -16,12 +17,13 @@ import { PostInputComponent } from '../../ui/post-input/post-input.component';
 
 
 @Component({
-    selector: 'app-post-feed',
-    imports: [PostInputComponent, PostComponent],
-    templateUrl: './post-feed.component.html',
-    styleUrl: './post-feed.component.scss'
+  selector: 'app-post-feed',
+  imports: [PostInputComponent, PostComponent],
+  templateUrl: './post-feed.component.html',
+  styleUrl: './post-feed.component.scss',
+  standalone: true
 })
-export class PostFeedComponent {
+export class PostFeedComponent implements AfterViewInit{
   postService = inject(PostService);
   profile = inject(ProfileService).me;
   hostElement = inject(ElementRef);
@@ -76,7 +78,7 @@ export class PostFeedComponent {
       this.postService.createPost({
         title: 'Перввый пост',
         content: postText,
-        authorId: this.profile()!.id,
+        authorId: this?.profile()!.id
         // communityId: this.post()!.communityId,
       })
     ).then(() => {

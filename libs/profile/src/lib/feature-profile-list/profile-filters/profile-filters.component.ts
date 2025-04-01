@@ -1,27 +1,30 @@
 import { Component, inject } from '@angular/core';
 import {
   FormBuilder,
-  ReactiveFormsModule,
+  ReactiveFormsModule
 } from '@angular/forms';
-import { debounceTime, startWith, switchMap } from 'rxjs';
+import { debounceTime, startWith } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { SvgIconComponent } from '@tt/common-ui';
-import { ProfileService } from '@tt/data-access/profile';
+import { profileActions } from '@tt/data-access/profile';
+import { Store } from '@ngrx/store';
 
 @Component({
-    selector: 'app-profile-filters',
-    imports: [ReactiveFormsModule, SvgIconComponent],
-    templateUrl: './profile-filters.component.html',
-    styleUrl: './profile-filters.component.scss'
+  selector: 'app-profile-filters',
+  imports: [ReactiveFormsModule, SvgIconComponent],
+  templateUrl: './profile-filters.component.html',
+  styleUrl: './profile-filters.component.scss',
+  standalone: true
 })
 export class ProfileFiltersComponent {
   fb = inject(FormBuilder);
-  profileService = inject(ProfileService);
+  store = inject(Store);
+
 
   searchForm = this.fb.group({
     firstName: [''],
     lastName: [''],
-    stack: [''],
+    stack: ['']
   });
 
   constructor() {
@@ -29,11 +32,11 @@ export class ProfileFiltersComponent {
       .pipe(
         startWith({}),
         debounceTime(500),
-        switchMap((formValue) => {
-          return this.profileService.filterProfiles(formValue);
-        }),
         takeUntilDestroyed()
       )
-      .subscribe();
+      .subscribe(formValue => {
+        this.store.dispatch(profileActions.filterEvents({ filters: formValue }));
+        //При изменении формы, диспатчим action
+      });
   }
 }

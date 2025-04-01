@@ -11,10 +11,11 @@ import { AuthService } from '@tt/data-access/auth/service/auth.service';
 
 
 @Component({
-    selector: 'app-login-page',
-    imports: [ReactiveFormsModule, SvgIconComponent],
-    templateUrl: './login-page.component.html',
-    styleUrl: './login-page.component.scss'
+  selector: 'app-login-page',
+  imports: [ReactiveFormsModule, SvgIconComponent],
+  templateUrl: './login-page.component.html',
+  styleUrl: './login-page.component.scss',
+  standalone: true
 })
 export class LoginPageComponent {
 
@@ -30,7 +31,7 @@ export class LoginPageComponent {
   onSubmit(): void {
     if (this.loginForm.valid) {
       console.log(this.loginForm.value);
-//@ts-ignore
+      //@ts-ignore
       this.authService.login(this.loginForm.value).subscribe((res) => {
         this.router.navigate(['']);
         console.log(res);

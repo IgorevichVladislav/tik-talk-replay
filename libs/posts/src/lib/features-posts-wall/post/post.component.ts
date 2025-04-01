@@ -4,7 +4,7 @@ import {
   inject,
   input,
   OnInit,
-  signal,
+  signal
 } from '@angular/core';
 
 import { DatePipe } from '@angular/common';
@@ -15,18 +15,19 @@ import { Post, PostComment, PostService } from '@tt/data-access/posts';
 import { ProfileService } from '@tt/data-access/profile';
 
 @Component({
-    selector: 'app-post',
-    imports: [
-        AvatarCircleComponent,
-        DatePipe,
-        SvgIconComponent,
-        PostInputComponent,
-        DndDirective,
-        CommentComponent,
-        TimeAgoPipe
-    ],
-    templateUrl: './post.component.html',
-    styleUrl: './post.component.scss'
+  selector: 'app-post',
+  imports: [
+    AvatarCircleComponent,
+    DatePipe,
+    SvgIconComponent,
+    PostInputComponent,
+    DndDirective,
+    CommentComponent,
+    TimeAgoPipe
+  ],
+  templateUrl: './post.component.html',
+  styleUrl: './post.component.scss',
+  standalone: true
 })
 export class PostComponent implements OnInit {
   profile = inject(ProfileService).me;
@@ -53,7 +54,7 @@ export class PostComponent implements OnInit {
         text: commentText,
         authorId: this.profile()!.id,
         postId: this.post()!.id,
-        commentId: this.comment()?.id,
+        commentId: this.comment()?.id
       })
     ).then(async () => {
       const comment = await firstValueFrom(

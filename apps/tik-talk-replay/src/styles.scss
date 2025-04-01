@@ -135,65 +135,7 @@ body {
   height: 18px;
 }
 
-.login-form {
-  max-width: 440px;
 
-  &__label {
-    display: block;
-    position: relative;
-  }
-
-  &__text {
-    line-height: 16px;
-    margin: 16px 0 8px;
-  }
-
-  &__input {
-    background-color: var(--dark-color);
-    color: var(--light-transparent);
-    padding: 12px 20px;
-    border: 1px solid var(--light-color);
-    border-radius: 2px;
-    width: 100%;
-    font-size: 14px;
-    line-height: 21px;
-    font-weight: 400;
-
-    &::placeholder {
-      color: var(--light-transparent);
-    }
-  }
-
-  &__button {
-    position: absolute;
-    top: 53%;
-    right: 20px;
-  }
-
-  &__icon {
-    height: 20px;
-    width: 20px;
-    color: var(--light-transparent);
-
-    &.telegram {
-      color: var(--light-color);
-    }
-
-    &.active {
-      color: var(--primary-color);
-    }
-  }
-
-  &__submit-btn {
-    padding: 10px 0;
-    color: var(--dark-color);
-    background-color: var(--primary-color);
-    width: 100%;
-    font-size: 14px;
-    border: 1px solid var(--dark-color);
-    border-radius: 2px;
-  }
-}
 
 .skill-tag {
   max-height: 24px;
@@ -219,4 +161,17 @@ body {
 
 .tt-input.ng-invalid.ng-touched {
   border: 1px solid red;
+}
+
+//input:-webkit-autofill,
+//input:-webkit-autofill:hover,
+//input:-webkit-autofill:focus,
+//input:-internal-autofill-selected {
+//  background: var(--dark-color) !important;
+//  color: var(--light-transparent) !important;
+//}
+
+input:-internal-autofill-selected {
+  background: var(--dark-color) !important;
+  color: var(--light-transparent) !important;
 }

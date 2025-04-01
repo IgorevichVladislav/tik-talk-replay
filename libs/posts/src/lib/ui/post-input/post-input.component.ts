@@ -13,10 +13,11 @@ import { AvatarCircleComponent, SvgIconComponent } from '@tt/common-ui';
 import { GlobalStoreService } from '@tt/data-access/shared';
 
 @Component({
-    selector: 'app-post-input',
-    imports: [AvatarCircleComponent, NgIf, SvgIconComponent, FormsModule],
-    templateUrl: './post-input.component.html',
-    styleUrl: './post-input.component.scss'
+  selector: 'app-post-input',
+  imports: [AvatarCircleComponent, NgIf, SvgIconComponent, FormsModule],
+  templateUrl: './post-input.component.html',
+  styleUrl: './post-input.component.scss',
+  standalone: true
 })
 export class PostInputComponent {
   r2 = inject(Renderer2);

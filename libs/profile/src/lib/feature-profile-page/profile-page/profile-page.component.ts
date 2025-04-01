@@ -15,19 +15,20 @@ import { PostFeedComponent } from '@tt/posts';
 import { ProfileService } from '@tt/data-access/profile';
 
 @Component({
-    selector: 'app-profile-page',
-    imports: [
-        ProfileHeaderComponent,
-        RouterOutlet,
-        AsyncPipe,
-        RouterLink,
-        SvgIconComponent,
-        NgForOf,
-        ImgUrlPipe,
-        PostFeedComponent
-    ],
-    templateUrl: './profile-page.component.html',
-    styleUrl: './profile-page.component.scss'
+  selector: 'app-profile-page',
+  imports: [
+    ProfileHeaderComponent,
+    RouterOutlet,
+    AsyncPipe,
+    RouterLink,
+    SvgIconComponent,
+    NgForOf,
+    ImgUrlPipe,
+    PostFeedComponent
+  ],
+  templateUrl: './profile-page.component.html',
+  styleUrl: './profile-page.component.scss',
+  standalone: true
 })
 export class ProfilePageComponent {
   profileService = inject(ProfileService);

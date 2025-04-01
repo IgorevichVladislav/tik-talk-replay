@@ -3,7 +3,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
   Router,
   RouterLink,
-  RouterLinkActive,
+  RouterLinkActive
 } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { toObservable } from '@angular/core/rxjs-interop';
@@ -13,18 +13,19 @@ import { AvatarUploadComponent, ProfileHeaderComponent } from '../../ui';
 import { Profile, ProfileService } from '@tt/data-access/profile';
 
 @Component({
-    selector: 'app-settings-page',
-    imports: [
-        ProfileHeaderComponent,
-        ReactiveFormsModule,
-        SvgIconComponent,
-        AvatarUploadComponent,
-        RouterLink,
-        RouterLinkActive,
-        AsyncPipe
-    ],
-    templateUrl: './settings-page.component.html',
-    styleUrl: './settings-page.component.scss'
+  selector: 'app-settings-page',
+  imports: [
+    ProfileHeaderComponent,
+    ReactiveFormsModule,
+    SvgIconComponent,
+    AvatarUploadComponent,
+    RouterLink,
+    RouterLinkActive,
+    AsyncPipe
+  ],
+  templateUrl: './settings-page.component.html',
+  styleUrl: './settings-page.component.scss',
+  standalone: true
 })
 export class SettingsPageComponent {
   profile = input<Profile>();
@@ -41,7 +42,7 @@ export class SettingsPageComponent {
     lastName: ['', Validators.required],
     username: [{ value: '', disabled: true }, Validators.required],
     description: [''],
-    stack: [''],
+    stack: ['']
   });
 
   constructor() {
@@ -54,7 +55,7 @@ export class SettingsPageComponent {
       this.form.patchValue({
         //@ts-ignore
         ...this.profileService.me(),
-        stack: this.mergeStack(this.profileService.me()?.stack),
+        stack: this.mergeStack(this.profileService.me()?.stack)
       });
     });
   }
@@ -75,10 +76,10 @@ export class SettingsPageComponent {
     }
 
     firstValueFrom(
-    //@ts-ignore
+      //@ts-ignore
       this.profileService.patchProfile({
         ...this.form.value,
-        stack: this.splitStack(this.form.value?.stack),
+        stack: this.splitStack(this.form.value?.stack)
       })
     );
   }

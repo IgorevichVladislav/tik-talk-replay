@@ -1,47 +1,47 @@
-:host {
-  display: grid;
-  place-content: center;
-  height: 100dvh;
-}
-
-form {
-  height: 100dvh;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.tt-control-label {
-  display: flex;
-  flex-direction: column;
-}
-
-.tt-input {
-  background-color: var(--dark-color);
-  border-radius: 4px;
-  padding: 16px;
-  color: var(--light-transparent);
-}
-
-.two-columns {
-  display: grid;
-  margin-top: 12px;
-  margin-bottom: 12px;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 12px;
-}
-
-.tt-input::-webkit-calendar-picker-indicator {
-  background-color: tomato;
-  cursor: pointer;
-}
-
-.tt-input.ng-pending {
-  border: 2px dashed yellowgreen;
-}
+//:host {
+//  display: grid;
+//  place-content: center;
+//  height: 100dvh;
+//}
+//
+//form {
+//  height: 100dvh;
+//  max-width: 600px;
+//  display: flex;
+//  flex-direction: column;
+//}
+//
+//.form-grid {
+//  display: grid;
+//  grid-template-columns: 1fr 1fr;
+//  gap: 12px;
+//}
+//
+//.tt-control-label {
+//  display: flex;
+//  flex-direction: column;
+//}
+//
+//.tt-input {
+//  background-color: var(--dark-color);
+//  border-radius: 4px;
+//  padding: 16px;
+//  color: var(--light-transparent);
+//}
+//
+//.two-columns {
+//  display: grid;
+//  margin-top: 12px;
+//  margin-bottom: 12px;
+//  grid-template-columns: repeat(2, 1fr);
+//  grid-gap: 12px;
+//}
+//
+//.tt-input::-webkit-calendar-picker-indicator {
+//  background-color: tomato;
+//  cursor: pointer;
+//}
+//
+//.tt-input.ng-pending {
+//  border: 2px dashed yellowgreen;
+//}

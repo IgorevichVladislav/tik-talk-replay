@@ -8,17 +8,18 @@ import { ChatsBtnComponent } from '../index';
 import { ChatService } from '@tt/data-access/chats';
 
 @Component({
-    selector: 'app-chat-list',
-    imports: [
-        ChatsBtnComponent,
-        ReactiveFormsModule,
-        SvgIconComponent,
-        AsyncPipe,
-        RouterLink,
-        RouterLinkActive
-    ],
-    templateUrl: './chat-list.component.html',
-    styleUrl: './chat-list.component.scss'
+  selector: 'app-chat-list',
+  imports: [
+    ChatsBtnComponent,
+    ReactiveFormsModule,
+    SvgIconComponent,
+    AsyncPipe,
+    RouterLink,
+    RouterLinkActive
+  ],
+  templateUrl: './chat-list.component.html',
+  styleUrl: './chat-list.component.scss',
+  standalone: true
 })
 export class ChatListComponent {
   chatsService = inject(ChatService);

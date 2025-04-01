@@ -5,7 +5,7 @@ import {
   input,
   Input,
   Output,
-  Renderer2,
+  Renderer2
 } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -14,16 +14,17 @@ import { ProfileService } from '@tt/data-access/profile';
 
 
 @Component({
-    selector: 'app-message-input',
-    imports: [
-        AvatarCircleComponent,
-        NgIf,
-        ReactiveFormsModule,
-        SvgIconComponent,
-        FormsModule
-    ],
-    templateUrl: './message-input.component.html',
-    styleUrl: './message-input.component.scss'
+  selector: 'app-message-input',
+  imports: [
+    AvatarCircleComponent,
+    NgIf,
+    ReactiveFormsModule,
+    SvgIconComponent,
+    FormsModule
+  ],
+  templateUrl: './message-input.component.html',
+  styleUrl: './message-input.component.scss',
+  standalone: true
 })
 export class MessageInputComponent {
   r2 = inject(Renderer2);
