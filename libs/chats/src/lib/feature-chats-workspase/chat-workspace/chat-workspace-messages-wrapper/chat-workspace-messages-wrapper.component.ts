@@ -49,7 +49,6 @@ export class ChatWorkspaceMessagesWrapperComponent implements AfterViewInit {
     fromEvent(window, 'resize')
       .pipe(
         audit(() => interval(1000)),
-        takeUntilDestroyed()
       )
       .subscribe(() => {
         console.log(123);

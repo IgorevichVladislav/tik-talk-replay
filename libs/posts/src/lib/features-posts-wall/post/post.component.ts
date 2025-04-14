@@ -7,21 +7,19 @@ import {
   signal
 } from '@angular/core';
 
-import { DatePipe } from '@angular/common';
-import { firstValueFrom } from 'rxjs';
-import { AvatarCircleComponent, DndDirective, SvgIconComponent, TimeAgoPipe } from '@tt/common-ui';
+import { AvatarCircleComponent, SvgIconComponent, TimeAgoPipe } from '@tt/common-ui';
 import { CommentComponent, PostInputComponent } from '../../ui';
-import { Post, PostComment, PostService } from '@tt/data-access/posts';
+import { Post, PostComment } from '@tt/data-access/posts';
 import { ProfileService } from '@tt/data-access/profile';
+import { Store } from '@ngrx/store';
+import { postsActions } from '@tt/data-access/posts/store';
 
 @Component({
   selector: 'app-post',
   imports: [
     AvatarCircleComponent,
-    DatePipe,
     SvgIconComponent,
     PostInputComponent,
-    DndDirective,
     CommentComponent,
     TimeAgoPipe
   ],
@@ -34,10 +32,9 @@ export class PostComponent implements OnInit {
   post = input<Post>();
   comment = input<PostComment>();
   isCommentInput = input(false);
+  store = inject(Store)
 
   comments = signal<PostComment[]>([]);
-
-  postService = inject(PostService);
 
   @HostBinding('class.dashed-comment')
   get isComment() {
@@ -49,19 +46,14 @@ export class PostComponent implements OnInit {
   }
 
   async onCreated(commentText: string) {
-    firstValueFrom(
-      this.postService.createComment({
-        text: commentText,
-        authorId: this.profile()!.id,
-        postId: this.post()!.id,
-        commentId: this.comment()?.id
-      })
-    ).then(async () => {
-      const comment = await firstValueFrom(
-        this.postService.getCommentsByPostId(this.post()!.id)
-      );
-      this.comments.set(comment);
-    });
-    return;
+
+    this.store.dispatch(postsActions.createComment({
+      commentDto: {
+            text: commentText,
+            authorId: this.profile()!.id,
+            postId: this.post()!.id,
+            commentId: this.comment()?.id
+      }
+    }))
   }
 }

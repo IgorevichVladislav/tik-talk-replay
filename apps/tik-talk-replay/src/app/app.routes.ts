@@ -6,6 +6,7 @@ import { canActivateAuth, LoginPageComponent } from '@tt/auth-service';
 import { provideState } from '@ngrx/store';
 import { profileFeature, ProfilesEffects } from '@tt/data-access/profile';
 import { provideEffects } from '@ngrx/effects';
+import { postFeature, PostsEffects } from '@tt/data-access/posts/store';
 
 export const routes: Routes = [
   {
@@ -13,7 +14,14 @@ export const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: '', redirectTo: 'profile/me', pathMatch: 'full' },
-      { path: 'profile/:id', component: ProfilePageComponent },
+      {
+        path: 'profile/:id', component: ProfilePageComponent,
+        providers: [
+          provideState(postFeature),
+          provideEffects(PostsEffects)
+        ]
+
+      },
       { path: 'settings', component: SettingsPageComponent },
       {
         path: 'search',

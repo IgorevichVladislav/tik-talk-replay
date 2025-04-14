@@ -1,21 +1,21 @@
 import { createSelector } from '@ngrx/store';
-import { profileFeature } from './reducer';
+import { postFeature } from './reducer';
 
 //Получаем profiles, которые загружены в reducer
 
-export const selectFilteredProfiles = createSelector(
+export const selectPosts = createSelector(
   //По согласованию всегда начинается со слова select, дальше пишем то, что мы будем получать
-  profileFeature.selectProfiles,
+  postFeature.selectPosts,
   //Первый аргумент функции, обращаемся к reducer и берем selectProfiles (Берет все профили)
-  profiles => profiles
+  (posts) => {
+    return posts;
+  }
   //Второй аргумент. Пишем, что нужно делать с тем, что получили (Отдает все профили)
   //В селекторах можно что-то видоизменять. Добавить метод filter()
 );
 
-export const selectedSavedFilters = createSelector(
-  profileFeature.selectSaveFilters,
-  filters => {
-    console.log('filtersSelect', filters);
-    return filters
-  }
+
+export const selectComments = createSelector(
+  postFeature.selectComments,
+  comments => comments
 );

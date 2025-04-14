@@ -1,12 +1,12 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   FormBuilder,
   ReactiveFormsModule
 } from '@angular/forms';
-import { debounceTime, startWith } from 'rxjs';
+import { debounceTime } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { SvgIconComponent } from '@tt/common-ui';
-import { profileActions } from '@tt/data-access/profile';
+import { profileActions, selectedSavedFilters } from '@tt/data-access/profile';
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -16,10 +16,10 @@ import { Store } from '@ngrx/store';
   styleUrl: './profile-filters.component.scss',
   standalone: true
 })
-export class ProfileFiltersComponent {
+export class ProfileFiltersComponent implements OnInit {
   fb = inject(FormBuilder);
   store = inject(Store);
-
+  savedFilters = this.store.selectSignal(selectedSavedFilters);
 
   searchForm = this.fb.group({
     firstName: [''],
@@ -28,15 +28,20 @@ export class ProfileFiltersComponent {
   });
 
   constructor() {
+
     this.searchForm.valueChanges
       .pipe(
-        startWith({}),
         debounceTime(500),
         takeUntilDestroyed()
       )
       .subscribe(formValue => {
+        this.store.dispatch(profileActions.saveResults({ saveFilters: formValue }));
         this.store.dispatch(profileActions.filterEvents({ filters: formValue }));
-        //При изменении формы, диспатчим action
       });
+
+  }
+
+  ngOnInit() {
+    this.searchForm.patchValue(this.savedFilters())
   }
 }

@@ -7,6 +7,13 @@ export const profileActions = createActionGroup({
   events: {
     //Создаем событие в actions
     'filter events': props<{ filters: Record<string, any> }>(),
-    'profiles loaded': props<{ profiles: Profile[] }>()
+    'profiles loaded': props<{ profiles: Profile[] }>(),
+    'save results': props<{
+      saveFilters: Partial<{
+        firstName: string | null;
+        lastName: string | null;
+        stack: string | null;
+      }>
+    }>()
   }
 });

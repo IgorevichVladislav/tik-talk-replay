@@ -5,7 +5,7 @@ import {
   EventEmitter,
   HostListener,
   inject,
-  input,
+  input, OnInit,
   Output,
   Renderer2
 } from '@angular/core';
@@ -14,6 +14,8 @@ import { Post, PostComment, PostService } from '@tt/data-access/posts';
 import { ProfileService } from '@tt/data-access/profile';
 import { PostComponent } from '../post/post.component';
 import { PostInputComponent } from '../../ui/post-input/post-input.component';
+import { Store } from '@ngrx/store';
+import { postsActions, selectPosts } from '@tt/data-access/posts/store';
 
 
 @Component({
@@ -23,13 +25,14 @@ import { PostInputComponent } from '../../ui/post-input/post-input.component';
   styleUrl: './post-feed.component.scss',
   standalone: true
 })
-export class PostFeedComponent implements AfterViewInit{
+export class PostFeedComponent implements OnInit, AfterViewInit{
   postService = inject(PostService);
   profile = inject(ProfileService).me;
   hostElement = inject(ElementRef);
   r2 = inject(Renderer2);
+  store = inject(Store);
 
-  feed = this.postService.posts;
+  feed = this.store.selectSignal(selectPosts)
   post = input<Post>();
   comment = input<PostComment>();
   @Output() created = new EventEmitter<string>();
@@ -39,9 +42,6 @@ export class PostFeedComponent implements AfterViewInit{
     this.resizeFeed();
   }
 
-  constructor() {
-    this.loadPosts();
-  }
 
   ngAfterViewInit() {
     this.resizeFeed();
@@ -61,30 +61,22 @@ export class PostFeedComponent implements AfterViewInit{
     this.r2.setStyle(this.hostElement.nativeElement, 'height', `${height}px`);
   }
 
-  private loadPosts() {
-    firstValueFrom(this.postService.fetchPost())
-      .then((posts) => {
-        this.feed.set(posts);
-      })
-      .catch((err) => {
-        console.log('Error loading posts', err);
-      });
-  }
-
   onCreatePost(postText: string) {
     if (!postText) return;
 
-    firstValueFrom(
-      this.postService.createPost({
-        title: 'Перввый пост',
-        content: postText,
-        authorId: this?.profile()!.id
-        // communityId: this.post()!.communityId,
-      })
-    ).then(() => {
-      this.created.emit();
-      this.loadPosts();
-    });
-    return;
+    this.store.dispatch(postsActions.createPost({
+      postDto: {
+            title: 'Первый пост',
+            content: postText,
+            authorId: this?.profile()!.id,
+            // communityId: this.post()!.communityId,
+      }
+    }))
+
+  }
+
+  ngOnInit() {
+    this.store.dispatch(postsActions.fetchPosts({}));
+
   }
 }
