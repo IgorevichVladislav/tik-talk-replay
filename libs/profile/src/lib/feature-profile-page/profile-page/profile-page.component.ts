@@ -1,10 +1,8 @@
 import { Component, inject, signal } from '@angular/core';
-
 import {
   ActivatedRoute,
   Router,
   RouterLink,
-  RouterOutlet
 } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { toObservable } from '@angular/core/rxjs-interop';
@@ -13,14 +11,11 @@ import { ImgUrlPipe, SvgIconComponent } from '@tt/common-ui';
 import { ProfileHeaderComponent } from '../../ui';
 import { PostFeedComponent } from '@tt/posts';
 import { ProfileService } from '@tt/data-access/profile';
-import { Store } from '@ngrx/store';
-import { postsActions, selectPosts } from '@tt/data-access/posts/store';
 
 @Component({
   selector: 'app-profile-page',
   imports: [
     ProfileHeaderComponent,
-    RouterOutlet,
     AsyncPipe,
     RouterLink,
     SvgIconComponent,
@@ -38,11 +33,9 @@ export class ProfilePageComponent  {
   me$ = toObservable(this.profileService.me);
   subscribers$ = this.profileService.getSubscribersShortList(6);
 
-  // store = inject(Store);
 
   isMyPage = signal(false);
 
-  // posts = this.store.selectSignal(selectPosts);
 
   profile$ = this.route.params.pipe(
     switchMap(({ id }) => {
@@ -55,7 +48,4 @@ export class ProfilePageComponent  {
     this.router.navigate(['/chats', 'new'], { queryParams: { userId } });
   }
 
-  // ngOnInit() {
-  //   this.store.dispatch(postsActions.fetchPosts())
-  // }
 }

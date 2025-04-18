@@ -3,16 +3,32 @@ import { HttpClient } from '@angular/common/http';
 import { map, switchMap, timer } from 'rxjs';
 import { Chat, LastMessageRes, Message } from '../../../index';
 import { ProfileService } from '../../../index';
+import { ChatWsService } from '../interface/chat-ws-service.interface';
+import { ChatWsNativeService } from './chat-ws-native.service';
 
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ChatService {
+  baseApiUrl = 'https://icherniakov.ru/yt-course/';
+  chatUtl = `${this.baseApiUrl}chat/`;
+  messageUrl = `${this.baseApiUrl}message/`;
+
   http = inject(HttpClient);
   me = inject(ProfileService).me;
 
+  wsAdapter: ChatWsService = new ChatWsNativeService();
+
   activeChatMessages = signal<Message[]>([]);
+
+
+//   connectWs() {
+// this.wsAdapter.connect({
+//
+// });
+//   }
+
 
   groupMessagesByDate = computed(() => {
     const groupDate = this.activeChatMessages().reduce((acc, message) => {
@@ -25,10 +41,6 @@ export class ChatService {
     }, {} as Record<string, Message[]>);
     return Object.entries(groupDate);
   });
-
-  baseApiUrl = 'https://icherniakov.ru/yt-course/';
-  chatUtl = `${this.baseApiUrl}chat/`;
-  messageUrl = `${this.baseApiUrl}message/`;
 
   createChat(userId: number) {
     return this.http.post<Chat>(`${this.chatUtl}${userId}`, {});
@@ -44,7 +56,7 @@ export class ChatService {
               chat.userFirst.id === message.userFromId
                 ? chat.userFirst
                 : chat.userSecond,
-            myMessage: this.me()?.id === message.userFromId,
+            myMessage: this.me()?.id === message.userFromId
           };
         });
 
@@ -56,7 +68,7 @@ export class ChatService {
             chat.userFirst.id === this.me()?.id
               ? chat.userSecond
               : chat.userFirst,
-          messages: patchedMessages,
+          messages: patchedMessages
         };
       })
     );
@@ -72,8 +84,8 @@ export class ChatService {
       {},
       {
         params: {
-          message,
-        },
+          message
+        }
       }
     );
   }

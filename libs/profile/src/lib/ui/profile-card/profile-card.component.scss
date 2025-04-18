@@ -29,6 +29,12 @@
     flex-wrap: wrap;
     gap: 4px;
   }
+
+  &__actions-btns {
+    display: grid;
+    place-content: center;
+    grid-gap: 6px;
+  }
 }
 
 .avatar-name {

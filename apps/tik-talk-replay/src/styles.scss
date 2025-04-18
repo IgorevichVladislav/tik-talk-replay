@@ -73,6 +73,10 @@ body {
   color: var(--dark-color);
   padding: 10px 20px;
   font-size: 14px;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .h1 {
@@ -135,8 +139,6 @@ body {
   height: 18px;
 }
 
-
-
 .skill-tag {
   max-height: 24px;
   padding: 4px 8px;
@@ -161,17 +163,4 @@ body {
 
 .tt-input.ng-invalid.ng-touched {
   border: 1px solid red;
-}
-
-//input:-webkit-autofill,
-//input:-webkit-autofill:hover,
-//input:-webkit-autofill:focus,
-//input:-internal-autofill-selected {
-//  background: var(--dark-color) !important;
-//  color: var(--light-transparent) !important;
-//}
-
-input:-internal-autofill-selected {
-  background: var(--dark-color) !important;
-  color: var(--light-transparent) !important;
 }
